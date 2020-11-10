@@ -17,7 +17,7 @@ client_key=5234234&country_code=cn&exp_tag=1_i/293748723479238749&language=zh-Ha
 ```
 ### 2.逆向
 通过逆向找到计算加密函数，调试过程略过。
-[Image](/dzlsolo/kuaishouDid.github.io/blob/main/20200426193720667.png?raw=true)
+[Image](https://github.com/dzlsolo/kuaishouDid.github.io/blob/main/20200426193720667.png)
 
 分析出是md5加密，传入的字符串顺序进行加密。
 最近快手升级了风控，多了一个log策略。
