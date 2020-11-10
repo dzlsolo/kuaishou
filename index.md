@@ -1,37 +1,35 @@
-## Welcome to GitHub Pages
+## 快手did设备注册,快手sig签名(sign解决,操作太快了，请稍微休息一下)
 
-You can use the [editor on GitHub](https://github.com/dzlsolo/kuaishouDid.github.io/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+快手签名计算分析，我们抓包看到sig签名字段，是post请求，32位MD5算法，把?后面的参数和post的参数一起排序，组合计算。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+### 1.抓包参数
+\
 ```
+POST /rest/n/user/profile/v2? HTTP/1.1
+Connection: close
+Accept-Language: zh-cn
+User-Agent: kwai-android
+Content-Type: application/x-www-form-urlencoded
+Host: apissl.gifshow.com
+Accept-Encoding: gzip, deflate
+ 
+client_key=5234234&country_code=cn&exp_tag=1_i/293748723479238749&language=zh-Hans-CN%3Bq%3D1&sig=c8a22b77755169b9ecfc63b30e428d32&user=72364723
+```
+### 2.逆向
+通过逆向找到计算加密函数，调试过程略过。
+[Image](https://github.com/dzlsolo/kuaishouDid.github.io/blob/main/20200426193720667.png)
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+分析出是md5加密，传入的字符串顺序进行加密。
+最近快手升级了风控，多了一个log策略。
+而且还需要注册did字段，如果不注册的话，是不能进行抓取的。
 
-### Jekyll Themes
+### 3.问答交流
+如果有什么不懂的可以联系我交流
+wx : z990809908
+### 4.免责声明
+请勿使用本服务于商用或大量抓取
+若因使用本服务与快手官方造成不必要的纠纷，本人盖不负责，存粹技术爱好，若侵犯快手贵公司的权益，请告知！
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/dzlsolo/kuaishouDid.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### 5.其他
+有抖音、小红书、tiktok、淘宝、等其他技术问题，也可随时交流。
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
